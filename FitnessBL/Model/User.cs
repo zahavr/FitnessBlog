@@ -4,6 +4,9 @@ using System.Text;
 
 namespace FitnessBL.Model
 {
+
+    [Serializable]
+
     public class User
     {
         #region Свойства
@@ -43,6 +46,7 @@ namespace FitnessBL.Model
         /// <param name="weight">Вес.</param>
         /// <param name="height">Рост.</param>
 
+
         public User(string name, Gender gender, DateTime dateOfBirhtday, double weight, double height)
         {
             #region Проверка условий
@@ -50,11 +54,12 @@ namespace FitnessBL.Model
             {
                 throw new ArgumentNullException("Имя пользователя не может быть пустым или null.", nameof(name));
             }
-            if(Gender == null)
+
+            if( gender == null)
             {
                 throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
             }
-            if(DateOfBirhtday < DateTime.Parse("01.01.1920" ) || DateOfBirhtday >= DateTime.Now)
+            if(dateOfBirhtday < DateTime.Parse("01.01.1920" ) || dateOfBirhtday >= DateTime.Now)
             {
                 throw new ArgumentException("Неправильная дата рождения.", nameof(DateOfBirhtday));
             }
